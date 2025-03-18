@@ -17,6 +17,7 @@ async def create_question_session(user_id) -> list:
   session_id = f"S{str(uuid.uuid4())[:5]}"
   
   categories = ["memory_recall", "object_recall", "date_questions", "backward_count", "problem_solving"]
+  categories_expect_memory_recall = ["object_recall", "date_questions", "backward_count", "problem_solving"]
   questions = []
   for category in categories:
     question_data = generate_standard_question(difficulty_level, category)
@@ -39,6 +40,9 @@ async def create_question_session(user_id) -> list:
     article_question = generate_article_question(difficulty_level)
     print(f"Article question: {article_question}", flush=True)
 
+    article_question["category"] = article_question.pop("type")
+    article_question["correct_answer"] = article_question.pop("answer")
+
     is_valid_format = False
     if article_question and "output" in article_question and article_question["output"]:
       output_text = article_question["output"][0]
@@ -55,7 +59,7 @@ async def create_question_session(user_id) -> list:
     else:
       print(f"Invalid article question format detected: {article_question.get('output', 'No output')}. Generating fallback question.", flush=True)
       # Generate a fallback question from a random category
-      random_category = random.choice(categories)
+      random_category = random.choice(categories_expect_memory_recall)
       fallback_question_data = generate_standard_question(difficulty_level, random_category)
       formatted_fallback_question = {
         "question": fallback_question_data.get("question", ""),
@@ -71,7 +75,7 @@ async def create_question_session(user_id) -> list:
   except Exception as e:
     print(f"An error occurred while generating article question: {e}. Generating fallback question.", flush=True)
     # Generate a fallback question from a random category
-    random_category = random.choice(categories)
+    random_category = random.choice(categories_expect_memory_recall)
     fallback_question_data = generate_standard_question(difficulty_level, random_category)
     formatted_fallback_question = {
       "question": fallback_question_data.get("question", ""),

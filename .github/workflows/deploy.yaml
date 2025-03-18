@@ -11,6 +11,7 @@ env:
   GCR_SERVICE: '${{ secrets.GCR_SERVICE }}'
   GAR_NAME: '${{ secrets.GAR_NAME }}'
   GAR_REGION: '${{ secrets.GAR_REGION }}'
+  FIREBASE_SERVICE_ACCOUNT_KEY: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}'
  
 jobs:
   deploy:
