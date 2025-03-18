@@ -58,7 +58,7 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
                 "question": "Can you name this object?",
                 "answers": ["<Randomized Option 1>", "<Randomized Option 2>", "<Randomized Option 3>", "<Randomized Option 4>"],
                 "correct_answer": "<Correct Answer>",
-                "link_of_img": "https://pixabay.com/api/?key=49349511-20b9eb3c76f0e2f4c37783c91&q=<random_unique_object>&image_type=photo"
+                "link_of_img": "https://pixabay.com/api/?key=49349511-20b9eb3c76f0e2f4c37783c91&q=<random_unique_object>&image_type=vector"
             }}
             """,
 
