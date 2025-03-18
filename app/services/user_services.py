@@ -1,6 +1,8 @@
 from database.db import get_db
 from database.db import init_db
 
+db = get_db()
+
 def find_user_by_id_demo(user_id):
   users = [
       {"id": 1, "name": "John Doe", "email": "john@example.com", "age": 25, "difficulty_level": 0},
@@ -20,7 +22,6 @@ def find_user_by_id_demo(user_id):
 
 def find_user_by_id(user_id):
     """Fetch a user by ID from Firestore."""
-    db = get_db()
     user_ref = db.collection('users-c').document(str(user_id))
     user = user_ref.get()
 
@@ -28,3 +29,24 @@ def find_user_by_id(user_id):
         return user.to_dict()  # Convert Firestore document to Python dictionary
     else:
         return None  # Return None if user not found
+    
+def update_difficulty_level(user_id, new_difficulty_level, recent_avg_score, recent_avg_res_time, recent_action_taken):
+    """Update the difficulty_level of a user in Firestore."""
+    try:
+        user_ref = db.collection('users-c').document(str(user_id))
+        user_doc = user_ref.get()
+
+        if user_doc.exists:
+            user_ref.update({
+              "difficulty_level": new_difficulty_level,
+              "recent_avg_score": recent_avg_score, 
+              "recent_avg_res_time": recent_avg_res_time,
+              "recent_action_taken": recent_action_taken
+            })
+            return {"success": True, "message": "Difficulty level updated successfully."}
+        else:
+            return {"success": False, "message": "User not found."}
+
+    except Exception as e:
+        print(f"An error occurred while updating difficulty level: {str(e)}")
+        return {"success": False, "message": "An error occurred."}

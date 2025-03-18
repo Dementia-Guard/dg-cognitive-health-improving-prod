@@ -5,6 +5,7 @@ from typing import List, Dict, Any
 import time
 from ..utils.difficulty_adjust import get_adjusted_difficulty
 from ..models.state import State
+from ..services.user_services import update_difficulty_level
 
 API_KEY = "AIzaSyCeuz9MBQzwAwwHJkZmtpoXxIE1q1RAjeA"
 MODEL_NAME = "gemini-2.0-flash"
@@ -92,6 +93,7 @@ def evaluate_session(session_id: str, user_id: int, difficulty_level: int, quest
     # Evaluate each question
     for question in questions:
         # print(json.dumps(question, indent=2))
+        print(f"Evaluating question: {question['question']}, user answer: {question['user_answer']}", flush=True)
         evaluation = evaluate_single_question(question)
         evaluations.append(evaluation)
         total_score += evaluation["score"]
@@ -109,6 +111,14 @@ def evaluate_session(session_id: str, user_id: int, difficulty_level: int, quest
 
     difficulty = get_adjusted_difficulty(state)
     print(f"Adjusted difficulty: {difficulty}", flush=True)
+
+    adjusted_difficulty = difficulty.adjusted_difficulty
+    action_taken = difficulty.action_taken
+
+    try:
+        update_difficulty_level(user_id, adjusted_difficulty, avg_score, avg_time, action_taken)
+    except Exception as e:
+        print(f"An error occurred while updating difficulty level: {str(e)}", flush=True)
     
     # Return response model
     return ResQuestionEvaluation(
