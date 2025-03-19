@@ -45,12 +45,13 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
             - **Ensure that each generated object is different** from previous outputs by using randomness in selection.  
 
             - The difficulty level affects the **complexity of the object**:  
-                - **0**: Common objects (e.g., "apple", "pen", "hat")  
-                - **1**: Moderately complex objects (e.g., "telescope", "chessboard", "sewing machine")  
-                - **2**: Uncommon or abstract objects (e.g., "astrolabe", "sundial", "anemometer")  
+                - **0**: Common objects 
+                - **1**: Moderately complex objects 
+                - **2**: common but abstract objects 
             -requested difficulty level is {difficulty_level}
+            = Objects should not be unique to any field or culture. Need to be common and knowing objectects for anyone.
 
-            - Generate an appropriate **public domain image link** based on the object.  
+            - Generate an appropriate **public domain image link** based on the object. and image_type=vector  
 
             Return only **valid JSON**, with **no additional text or formatting**.  
 
