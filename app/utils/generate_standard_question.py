@@ -49,7 +49,8 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
                 - **1**: Moderately complex objects 
                 - **2**: common but abstract objects 
             -requested difficulty level is {difficulty_level}
-            = Objects should not be unique to any field or culture. Need to be common and knowing objectects for anyone.
+            - Objects should not be unique to any field or culture. Need to be common and knowing objectects for anyone.
+            - And dont generate objects that cannot be touch physically like imagination, etc.
 
             - Generate an appropriate **public domain image link** based on the object. and image_type=vector  
 
