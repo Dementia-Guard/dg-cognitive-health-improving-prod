@@ -4,11 +4,13 @@ from fastapi.staticfiles import StaticFiles
 import os
 from app.api import create_question_session_endpoint
 from app.api import evaluate_question_session_endpoint
+from app.api import user_details_endpoint
 
 app = FastAPI()
 
 app.include_router(create_question_session_endpoint.router)
 app.include_router(evaluate_question_session_endpoint.router)
+app.include_router(user_details_endpoint.router)
 
 # Mount the static directory
 app.mount("/static", StaticFiles(directory=os.path.join(os.path.dirname(__file__), "static")), name="static")
