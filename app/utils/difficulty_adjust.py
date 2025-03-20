@@ -15,7 +15,7 @@ def get_adjusted_difficulty(state: State) -> Difficulty:
     Determines the new difficulty level based on user performance using Q-learning.
     """
     avg_score = round(state.avg_score, 1)
-    avg_res_time = max(10, min(60, state.avg_res_time))
+    avg_res_time = max(10, min(60, int(state.avg_res_time)))
     current_difficulty = state.current_difficulty
 
     input_state = (avg_score, avg_res_time, current_difficulty)
