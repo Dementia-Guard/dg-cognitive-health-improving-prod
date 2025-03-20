@@ -23,9 +23,9 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
             Generate a unique cognitive exercise question to test **memory recall**, following **MMSE and MoCA standards**.
 
             - **Dynamically generate three different words** each time based on the specified difficulty level {difficulty_level}:
-                - **0 (Easy)**: Common everyday objects (e.g., "apple", "chair", "door").
-                - **1 (Moderate)**: Slightly less common but familiar words (e.g., "guitar", "ladder", "garden").
-                - **2 (Challenging)**: Words that are less frequently used but still recognizable (e.g., "compass", "candleholder", "wheelbarrow").
+                - **0 (Easy)**: Common everyday objects.
+                - **1 (Moderate)**: Slightly less common but familiar words.
+                - **2 (Challenging)**: Words that are less frequently used but still recognizable.
             
             - **Ensure that words change with each generation** to prevent repetition.
 
@@ -52,9 +52,9 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
             - Requested difficulty level is {difficulty_level}.
 
             - **The difficulty level affects the complexity of the object**:  
-                - **0 (Easy)**: Very common, simple objects found in daily life (e.g., "apple", "chair", "shoe").  
-                - **1 (Moderate)**: Slightly more complex but still familiar objects (e.g., "guitar", "ladder", "teapot").  
-                - **2 (Challenging)**: Common but less frequently mentioned objects (e.g., "binoculars", "candleholder", "compass").  
+                - **0 (Easy)**: Very common, simple objects found in daily life.  
+                - **1 (Moderate)**: Slightly more complex but still familiar objects.  
+                - **2 (Challenging)**: Common but less frequently mentioned objects.  
 
             - **Objects must**:  
                 - Be universally recognizable and not specific to any profession, culture, or region.  
@@ -83,9 +83,9 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
             - Requested difficulty level is {difficulty_level}.
 
             - **The difficulty level determines the complexity**:  
-                - **0 (Easy)**: Basic date awareness (e.g., "What day of the week is today?", "Is today a weekend or a weekday?").  
-                - **1 (Moderate)**: Specific date-related questions (e.g., "What is today’s full date?", "Which month comes after this one?").  
-                - **2 (Challenging)**: Requires logical reasoning (e.g., "If today is Wednesday, what date was last Friday?", "What date will it be in exactly 10 days?").  
+                - **0 (Easy)**: Basic date awareness.  
+                - **1 (Moderate)**: Specific date-related questions.  
+                - **2 (Challenging)**: Requires logical reasoning.  
 
             - **Correct answers must be dynamically generated** based on the real-time date.  
             - **Avoid generic questions like ‘What is the current year?’** unless relevant to difficulty.  
