@@ -121,7 +121,7 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
             Return only **valid JSON**, with **no additional text or formatting**.
 
             {{
-                "question": "Count <length_of_answer_array> numbers backward from <random_starting_number>.",
+                "question": "Count <length_of_answer_array> numbers backward starting from <random_starting_number>.",
                 "answers": [<start_number>, <next_number>, <next_number>, ..., <last_number>]
             }}
             """,
@@ -130,7 +130,7 @@ def generate_standard_question(difficulty_level: int, category: str) -> dict:
             Generate a **unique problem-solving cognitive exercise question**, following **MMSE and MoCA standards**.
 
             - Each generated question must be **different from previous ones**, ensuring variety.
-            - Ensure **cultural relevance** by using **Sri Lankan references** (e.g., currency Rs., local transportation, familiar items like tea, coconuts, mangoes).
+            - Ensure **cultural relevance** by using **Sri Lankan references** .
             - Use **clear and concise wording** to ensure the question is understandable for all participants.
 
             - Requested difficulty level is {difficulty_level}.
