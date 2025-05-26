@@ -1,5 +1,6 @@
 from database.db import get_db
 from database.db import init_db
+import uuid
 
 db = get_db()
 
@@ -37,13 +38,31 @@ def update_difficulty_level(user_id, new_difficulty_level, recent_avg_score, rec
         user_doc = user_ref.get()
 
         if user_doc.exists:
+            user_data = user_doc.to_dict()
+            current_difficulty_level = user_data.get("difficulty_level", 0)
+
+            session_id = str(uuid.uuid4())
+
+            new_session = {
+                "adjusted_difficulty_level": new_difficulty_level,
+                "avg_res_time": recent_avg_res_time,
+                "avg_score": recent_avg_score,
+                "current_difficulty_level": current_difficulty_level,
+                "session_id": session_id
+            }
+
+            previous_sessions = user_data.get("previous_sessions", [])
+
+            previous_sessions.append(new_session)
+
             user_ref.update({
               "difficulty_level": new_difficulty_level,
               "recent_avg_score": recent_avg_score, 
               "recent_avg_res_time": recent_avg_res_time,
-              "recent_action_taken": recent_action_taken
+              "recent_action_taken": recent_action_taken,
+              "previous_sessions": previous_sessions
             })
-            return {"success": True, "message": "Difficulty level updated successfully."}
+            return {"success": True, "message": "Difficulty level and previous sessions updated successfully."}
         else:
             return {"success": False, "message": "User not found."}
 

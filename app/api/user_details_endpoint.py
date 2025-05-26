@@ -5,6 +5,13 @@ from ..services.user_services import find_user_by_id
 class ReqUserDetails(BaseModel):
     user_id: int
 
+class PreviousSession(BaseModel):
+    adjusted_difficulty_level: float
+    avg_res_time: float
+    avg_score: float
+    current_difficulty_level: float
+    session_id: str
+
 class ResUserDetails(BaseModel):
     user_id: int
     full_name: str
@@ -12,6 +19,7 @@ class ResUserDetails(BaseModel):
     difficulty_level: int
     recent_avg_res_time: float
     recent_avg_score: float
+    previous_sessions: list[PreviousSession]
 
 router = APIRouter()
 
@@ -29,7 +37,8 @@ async def user_details_endpoint(request: ReqUserDetails):
             "email": user.get("email"),
             "difficulty_level": user.get("difficulty_level"),
             "recent_avg_res_time": user.get("recent_avg_res_time"),
-            "recent_avg_score": user.get("recent_avg_score")
+            "recent_avg_score": user.get("recent_avg_score"),
+            "previous_sessions": user.get("previous_sessions", [])
         }
 
         # Check for None values in required fields
