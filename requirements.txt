@@ -7,3 +7,4 @@ fuzzywuzzy
 numpy
 pydantic
 firebase-admin
+pytest
