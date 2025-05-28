@@ -4,8 +4,8 @@ import random
 import json
 import re 
 
-API_KEY = "AIzaSyCeuz9MBQzwAwwHJkZmtpoXxIE1q1RAjeA"  # Replace with your Gemini API key
-MODEL_NAME = "gemini-2.0-flash"
+API_KEY = "AIzaSyC9DA3LBilEzHGxkUY5D-bbyMgnhaLaScA" 
+MODEL_NAME = "gemini-2.5-flash-preview-05-20"
 
 def generate_standard_question(difficulty_level: int, category: str) -> dict:
     """Generates a cognitive exercise question using Gemini API."""

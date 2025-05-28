@@ -7,8 +7,8 @@ from ..utils.difficulty_adjust import get_adjusted_difficulty
 from ..models.state import State
 from ..services.user_services import update_difficulty_level
 
-API_KEY = "AIzaSyCeuz9MBQzwAwwHJkZmtpoXxIE1q1RAjeA"
-MODEL_NAME = "gemini-2.0-flash"
+API_KEY = "AIzaSyC9DA3LBilEzHGxkUY5D-bbyMgnhaLaScA"
+MODEL_NAME = "gemini-2.5-flash-preview-05-20"
 
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel(MODEL_NAME)
